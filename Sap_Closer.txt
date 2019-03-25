@@ -1,36 +1,42 @@
-Attribute VB_Name = "Sap_Closer"
+'Attribute VB_Name = "Sap_Closer"
+'Save Worksheet in basis files from SAP to Excel Workbooks to target location
 Sub SAP_CL()
 
-'Here follow the new commands.
 SAP_Workbook = "worksheet in basis (1)"
+
+'Set location
 EXCEL_Path = "\\gBTcsm0010.emea.givaudan.com\HomeDirS$\nemeths2\Desktop\Cons\"
+
+'Set this variable
 myWorkbook = Plant & ".xlsx"
+
 On Error Resume Next
 Do
-Err.Clear
-Set xclapp = GetObject(, "Excel.Application")
-If Err.Number = 0 Then Exit Do
-'msgbox "Wait for Excel session"
-wscript.sleep 2000
+  Err.Clear
+  Set xclapp = GetObject(, "Excel.Application")
+  If Err.Number = 0 Then Exit Do
+  'msgbox "Wait for Excel session"
+  wscript.sleep 2000
 Loop
-Do
-Err.Clear
-Set xclwbk = xclapp.Workbooks.Item(SAP_Workbook)
-If Err.Number = 0 Then Exit Do
-'msgbox "Wait for SAP workbook"
-wscript.sleep 2000
-Loop
-On Error GoTo 0
-Set xclsheet = xclwbk.Worksheets(1)
-xclapp.Visible = True
-xclapp.DisplayAlerts = False
 
-xclapp.ActiveWorkbook.SaveAs EXCEL_Path & myWorkbook
-xclapp.ActiveWorkbook.Close
-Set xclwbk = Nothing
-Set xclsheet = Nothing
-'xclapp.Quit
-Set xclapp = Nothing
+Do
+  Err.Clear
+  Set xclwbk = xclapp.Workbooks.Item(SAP_Workbook)
+  If Err.Number = 0 Then Exit Do
+  'msgbox "Wait for SAP workbook"
+  wscript.sleep 2000
+Loop
+
+On Error GoTo 0
+  Set xclsheet = xclwbk.Worksheets(1)
+  xclapp.Visible = True
+  xclapp.DisplayAlerts = False
+  xclapp.ActiveWorkbook.SaveAs EXCEL_Path & myWorkbook
+  xclapp.ActiveWorkbook.Close
+  Set xclwbk = Nothing
+  Set xclsheet = Nothing
+  'xclapp.Quit
+  Set xclapp = Nothing
 
 End Sub
 
