@@ -1,6 +1,6 @@
 'Attribute VB_Name = "Sap_Closer"
 'Save Worksheet in basis files from SAP to Excel Workbooks to target location
-Sub SAP_CL()
+Sub SAP_WIB_SaveClose()
 
 SAP_Workbook = "worksheet in basis (1)"
 
