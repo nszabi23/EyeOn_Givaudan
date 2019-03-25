@@ -1,0 +1,29 @@
+'Attribute VB_Name = "Caller"
+
+Public wb_new As Workbook
+Public Plant As String
+
+Public Sub Main()
+
+Dim x As Integer
+Dim wb_new As Workbook
+
+For x = 2 To 68
+    
+    Plant = ThisWorkbook.Sheets("Plant").Range("C" & x).Value
+
+
+    'Set wb_new = Workbooks.Add
+    'wb_new.SaveAs ("\\gBTcsm0010.emea.givaudan.com\HomeDirS$\nemeths2\Desktop\Mat_mast\" & Plant & ".xlsx")
+
+    Call Master_sapgui
+    
+    'Call Master_sapgui_2
+    
+    'mentés zárás
+    
+    Call SAP_CL
+    
+Next
+
+End Sub
